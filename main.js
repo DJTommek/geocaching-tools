@@ -5,11 +5,11 @@ let FORMULAS_CALCULATED = [];
 
 function parseLetters() {
 	const rawInputValues = $('#input-values').val().trim();
-	inputValues = rawInputValues.split('\n');
-	inputValues.forEach(function (inputValue) {
-		matches = inputValue.trim().match(/^([a-zA-Z]+) *=? *([0-9]+)$/) // @TODO add support for float
+	const rows = rawInputValues.split('\n');
+	rows.forEach(function (row) {
+		const matches = row.trim().match(/^([a-zA-Z]+) *=? *([0-9]+)$/) // @TODO add support for float
 		if (matches) {
-			const firstPart = matches[1];
+			const firstPart = matches[1].toUpperCase();
 			const secondPart = matches[2];
 			if (firstPart.length === 1) {
 				LETTERS[firstPart] = parseInt(secondPart);
@@ -19,7 +19,7 @@ function parseLetters() {
 					LETTERS[letter] = parseInt(secondPart.charAt(i));
 				}
 			} else {
-				console.warn('Unexpected combination of letter and value: "' + inputValue + '"');
+				console.warn('Unexpected combination of letter and value: "' + row + '"');
 			}
 		}
 	});
@@ -136,11 +136,15 @@ function renderFormulas() {
 	$('#detected-formulas').html(formulasHtml);
 }
 
-function run() {
+function resetGlobalValues() {
 	LETTERS = {};
 	FORMULAS_INPUT.length = 0;
 	FORMULAS_OUTPUT.length = 0;
 	FORMULAS_CALCULATED.length = 0;
+}
+
+function run() {
+	resetGlobalValues();
 
 	parseLetters();
 	parseFormulas();
