@@ -9,6 +9,29 @@
 <body>
 <div class="container">
 	<h1 class="text-center"><a href="./">Geocaching tools</a></h1>
+	<form id="form-calculator">
+		<div class="form-group">
+			<label for="input-values">Input values</label>
+			<textarea class="form-control" id="input-values" rows="3">A=0
+BC=20
+D=6
+E=1
+F=5</textarea>
+		</div>
+		<div>
+			Detected values:
+			<p id="detected-input-values"></p>
+		</div>
+		<div class="form-group">
+			<label for="input-formulas">Formulas</label>
+			<textarea class="form-control" id="input-formulas" rows="3">N 50° 01.(D-B)(D-F)(A+C+E) E 014° 33.(D+B+A+E)(F)(D+1)
+N 50° 01.(B-A)(D/B)(D+D) E 014° 33.(D*B)(F)(A+23)</textarea>
+		</div>
+		<div>
+			Detected formulas (input, replaced, calculated):
+			<div id="detected-formulas"></div>
+		</div>
+	</form>
 </div>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
