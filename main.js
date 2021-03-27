@@ -149,9 +149,34 @@ function run() {
 
 	renderLetters();
 	renderFormulas();
+
+	saveForm();
+}
+
+function saveForm() {
+	const savedValues = $('#input-values').val();
+	if (savedValues) {
+		localStorage.setItem('values', savedValues);
+	}
+	const savedFormulas = $('#input-formulas').val();
+	if (savedFormulas) {
+		localStorage.setItem('formulas', savedFormulas);
+	}
+}
+
+function loadForm() {
+	const initialValues = localStorage.getItem('values');
+	if (initialValues) {
+		$('#input-values').val(initialValues);
+	}
+	const initialFormulas = localStorage.getItem('formulas');
+	if (initialFormulas) {
+		$('#input-formulas').val(initialFormulas);
+	}
 }
 
 $(function () {
+	loadForm();
 	run();
 	$('#form-calculator').on('change', function (event) {
 		run();
