@@ -49,7 +49,7 @@ function calculateFormulas() {
 				console.log('Too many divisions');
 				break;
 			}
-			matches = [...formula.matchAll(/([0-9]+) *\/ *([0-9]+)/g)];
+			matches = [...formula.matchAll(/(-?[0-9]+) *\/ *(-?[0-9]+)/g)];
 			matches.forEach(function (match) {
 				const firstDigit = parseInt(match[1]);
 				const secondDigit = parseInt(match[2]);
@@ -64,7 +64,7 @@ function calculateFormulas() {
 				console.log('Too many multiplications');
 				break;
 			}
-			matches = [...formula.matchAll(/([0-9]+) *\* *([0-9]+)/g)];
+			matches = [...formula.matchAll(/(-?[0-9]+) *\* *(-?[0-9]+)/g)];
 			matches.forEach(function (match) {
 				const firstDigit = parseInt(match[1]);
 				const secondDigit = parseInt(match[2]);
@@ -74,7 +74,7 @@ function calculateFormulas() {
 
 		i = 0;
 		do { // sum
-			matches = [...formula.matchAll(/([0-9]+) *\+ *([0-9]+)/g)];
+			matches = [...formula.matchAll(/(-?[0-9]+) *\+ *(-?[0-9]+)/g)];
 			i++;
 			if (i > 100) {
 				console.log('Too many sums');
@@ -94,7 +94,7 @@ function calculateFormulas() {
 				console.log('Too many substracts');
 				break;
 			}
-			matches = [...formula.matchAll(/([0-9]+) *- *([0-9]+)/g)];
+			matches = [...formula.matchAll(/(-?[0-9]+) *- *(-?[0-9]+)/g)];
 			matches.forEach(function (match) {
 				const firstDigit = parseInt(match[1]);
 				const secondDigit = parseInt(match[2]);
